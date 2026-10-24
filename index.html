@@ -205,6 +205,12 @@ function show_infobox() {
             ultimo = ora;
         }, { passive: false });
         window.addEventListener("scroll", function () { window.scrollTo(0, 0); });
+        /* al primo tocco il gioco impiega qualche secondo ad aprirsi: lo si dice, cosi' non sembra bloccato */
+        var primo = function () {
+            var box = document.getElementById("infobox");
+            if (box) { box.innerHTML = '<div class="t3 pulsa">Avvio il gioco...<br>ancora qualche secondo, non toccare.</div>'; }
+        };
+        document.addEventListener("pointerdown", primo, { once: true });
     })();
     </script>
     <meta name="mobile-web-app-capable" content="yes">
